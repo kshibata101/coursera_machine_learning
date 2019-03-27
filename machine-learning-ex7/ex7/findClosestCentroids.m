@@ -21,7 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for i = 1:size(X,1)
+  minval = 1e10;
+  for j = 1:K
+    val = (X(i,:) - centroids(j,:)) * (X(i,:) - centroids(j,:))';
+    if val < minval
+      idx(i) = j;
+      minval = val;
+    end
+  end
+end
 
 
 
